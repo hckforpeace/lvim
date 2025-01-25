@@ -45,7 +45,12 @@ function M.config()
             actions.smart_send_to_qflist(...)
             actions.open_qflist(...)
           end,
-          ["<CR>"] = actions.select_default,
+          ["<C-v>"] = function (finder, _, _)
+            require('telescope.actions').select_vertical(finder)
+          end,
+          ["<C-s>"] = function (finder, _, _)
+            require('telescope.actions').select_horizontal(finder)
+          end,         ["<CR>"] = actions.select_default,
         },
         n = {
           ["<C-n>"] = actions.move_selection_next,
